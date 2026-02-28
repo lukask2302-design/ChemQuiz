@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chémia</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="wrapper">
+        <h1 class="main-title">Názvoslovie</h1>
+    
+        <div class="menu-container">
+            <div class="menu-box">
+                <a href="{{ url_for('quiz_start', category='acids') }}"></a>
+                <img src="{{ url_for('static', filename='acid.jpg') }}" alt="Kyseliny" class="shift-right">
+                <span class="box-text">Kyseliny</span>
+            </div>
+            <div class="menu-box">
+                <a href="{{ url_for('quiz_start', category='compounds') }}"></a>
+                <img src="{{ url_for('static', filename='compound.jpg') }}" alt="Zlúčeniny">
+                <span class="box-text">Zlúčeniny</span>
+            </div>
+            <div class="menu-box">
+                <a href="{{ url_for('quiz_start', category='salts') }}"></a>
+                <img src="{{ url_for('static', filename='salt.jpg') }}" alt="Soli">
+                <span class="box-text">Soli</span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

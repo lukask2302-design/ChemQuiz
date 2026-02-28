@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Výsledok</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: rgba(240,240,240,0.95);
+            padding: 20px;
+        }
+        .result-container {
+            width: 100%;
+            max-width: 700px;
+            background: rgba(255,255,255,0.95);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        h1 {
+            margin-bottom: 20px;
+            font-size: 3rem;
+        }
+        .score {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+        }
+        .wrong-answer {
+            text-align: left;
+            background: rgba(240,240,240,0.6);
+            padding: 15px;
+            margin-bottom: 15px;
+            border-left: 5px solid #e74c3c;
+            border-radius: 5px;
+        }
+        .wrong-answer p {
+            margin: 5px 0;
+        }
+        a.button {
+            display: inline-block;
+            padding: 12px 25px;
+            text-decoration: none;
+            background: #444;
+            color: #fff;
+            border-radius: 5px;
+            margin-top: 20px;
+            font-size: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="result-container">
+        <h1>Gratulujem!</h1>
+        <div class="score">Dosiahnuté skóre: {{ score }} / {{ total }}</div>
+
+        {% if wrong_answers %}
+            <h2>Správne odpovede na nesprávne otázky:</h2>
+            {% for item in wrong_answers %}
+                <div class="wrong-answer">
+                    <p><strong>Otázka:</strong> {{ item.question }}</p>
+                    <p><strong>Vaša odpoveď:</strong> {{ item.your_answer }}</p>
+                    <p><strong>Správna odpoveď:</strong> {{ item.correct_answer }}</p>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>Gratulujem, všetky odpovede boli správne! 🎉</p>
+        {% endif %}
+
+        <a class="button" href="{{ url_for('home') }}">Späť na hlavnú stránku</a>
+    </div>
+</body>
+</html>
